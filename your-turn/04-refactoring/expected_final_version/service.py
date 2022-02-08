@@ -8,8 +8,7 @@ episode_data = {}
 
 
 def get_episode(show_id):
-    info = episode_data.get(show_id)
-    return info
+    return episode_data.get(show_id)
 
 
 def get_show_id_range():

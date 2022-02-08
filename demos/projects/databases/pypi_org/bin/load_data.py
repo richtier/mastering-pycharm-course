@@ -197,10 +197,7 @@ def get_email_and_name_from_text(name: str, email: str) -> dict:
         return data
 
     emails = email.strip().lower().split(',')
-    names = name
-    if len(email) > 1:
-        names = name.strip().split(',')
-
+    names = name.strip().split(',') if len(email) > 1 else name
     for n, e in zip(names, emails):
         if not n or not e:
             continue
@@ -301,7 +298,7 @@ def detect_license(license_text: str) -> Optional[str]:
 
 def build_releases(package_id: str, releases: dict) -> List[Release]:
     db_releases = []
-    for k in releases.keys():
+    for k in releases:
         all_releases_for_version = releases.get(k)
         if not all_releases_for_version:
             continue
@@ -354,12 +351,11 @@ def init_db():
 
 
 def get_file_names(data_path: str) -> List[str]:
-    files = []
-    for f in os.listdir(data_path):
-        if f.endswith('.json'):
-            files.append(
-                os.path.abspath(os.path.join(data_path, f))
-            )
+    files = [
+        os.path.abspath(os.path.join(data_path, f))
+        for f in os.listdir(data_path)
+        if f.endswith('.json')
+    ]
 
     files.sort()
     return files

@@ -10,10 +10,7 @@ def test_int_site_mapped_urls(client):
         href.text.strip().replace('http://127.0.0.1:5000', '').replace('http://localhost', '')
         for href in list(x.findall('url/loc'))
     ]
-    urls = [
-        u if u else '/'
-        for u in urls
-    ]
+    urls = [u or '/' for u in urls]
     print('Testing {} urls from sitemap...'.format(len(urls)), flush=True)
 
     has_tested_projects = False
@@ -24,7 +21,7 @@ def test_int_site_mapped_urls(client):
         if '/project/' in url:
             has_tested_projects = True
 
-        print('Testing url at ' + url)
+        print(f'Testing url at {url}')
         resp: Response = client.get(url)
         assert resp.status_code == 200
 

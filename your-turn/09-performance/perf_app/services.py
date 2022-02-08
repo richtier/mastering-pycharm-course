@@ -7,17 +7,14 @@ import requests
 def search(text: str) -> List[str]:
     url = build_url(text)
     response = perform_search(url)
-    results = convert_results(response)
-
-    return results
+    return convert_results(response)
 
 
 def build_url(text):
     # format is https://search.talkpython.fm/api/search?q=SEARCH
 
     encoded = urllib.parse.urlencode({'q': text})
-    url = 'https://search.talkpython.fm/api/search?{}'.format(encoded)
-    return url
+    return 'https://search.talkpython.fm/api/search?{}'.format(encoded)
 
 
 def perform_search(url):

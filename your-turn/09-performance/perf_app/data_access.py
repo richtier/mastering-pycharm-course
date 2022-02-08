@@ -3,15 +3,13 @@ import time
 
 def get_records(text):
     conn = create_connection()
-    results = run_query(conn, text)
-    return results
+    return run_query(conn, text)
 
 
 # TODO: Make this faster by caching / reusing the connection
 def create_connection():
     time.sleep(.250)
-    conn = {'connected': True}
-    return conn
+    return {'connected': True}
 
 
 def run_query(conn, text):
@@ -19,7 +17,7 @@ def run_query(conn, text):
         return []
 
     data = []
-    for r in range(1, 100):
+    for _ in range(1, 100):
         row = read_row(conn)
         data.append(row)
 

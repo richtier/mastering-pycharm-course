@@ -20,8 +20,8 @@ def test_package_details_success():
 
     # Act
     with unittest.mock.patch('pypi_org.services.package_service.get_package_by_id',
-                             return_value=test_package):
-        with flask_app.test_request_context(path='/project/' + test_package.id):
+                                 return_value=test_package):
+        with flask_app.test_request_context(path=f'/project/{test_package.id}'):
             resp: Response = package_details(test_package.id)
 
     # Assert
