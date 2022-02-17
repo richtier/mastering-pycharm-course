@@ -20,7 +20,7 @@ class DbSessionFactory:
         db_file = os.path.join(os.path.dirname(__file__), '..', 'db', 'blue_yellow.sqlite')
         db_file = os.path.abspath(db_file)
 
-        conn_str = 'sqlite:///' + db_file
+        conn_str = f'sqlite:///{db_file}'
         print("Connecting to db with conn string: {}".format(conn_str))
 
         engine = sqlalchemy.create_engine(conn_str, echo=False)

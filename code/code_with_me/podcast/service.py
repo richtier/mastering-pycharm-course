@@ -33,12 +33,8 @@ def get_episode(show_id: int) -> Episode:
 
 
 def get_latest_show_id():
-    if not episode_data:
-        return 0
-    return max(episode_data.keys())
+    return 0 if not episode_data else max(episode_data.keys())
 
 
 def get_min_show_id():
-    if not episode_data:
-        return 0
-    return min(episode_data.keys())
+    return 0 if not episode_data else min(episode_data.keys())

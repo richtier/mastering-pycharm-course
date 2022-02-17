@@ -17,7 +17,7 @@ def set_auth(response: Response, user_id: int):
 
 
 def __hash_text(text: str) -> str:
-    text = 'salty__' + text + '__text'
+    text = f'salty__{text}__text'
     return hashlib.sha512(text.encode('utf-8')).hexdigest()
 
 

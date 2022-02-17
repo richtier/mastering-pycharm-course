@@ -69,7 +69,7 @@ def get_posts(query):
     enc = urllib.parse.urlencode({'q': query})
     url = f'http://search.talkpython.fm/api/search?{enc}'
     res = requests.get(url)
-    return [d for d in res.json().get('results')]
+    return list(res.json().get('results'))
 
 
 def get_score(words):
@@ -93,8 +93,7 @@ def get_score(words):
         if word in neg:
             n_count += 1
 
-    score = (p_count - n_count) / (len(words) - remove)
-    return score
+    return (p_count - n_count) / (len(words) - remove)
 
 
 if __name__ == '__main__':

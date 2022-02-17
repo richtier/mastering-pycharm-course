@@ -3,8 +3,7 @@ import time
 
 def get_records(text):
     conn = create_connection()
-    results = run_query(conn, text)
-    return results
+    return run_query(conn, text)
 
 
 __conn = None
@@ -26,7 +25,7 @@ def run_query(conn, text):
         return []
 
     data = []
-    for r in range(1, 100):
+    for _ in range(1, 100):
         row = read_row(conn)
         data.append(row)
 

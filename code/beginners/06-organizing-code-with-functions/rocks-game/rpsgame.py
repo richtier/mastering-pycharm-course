@@ -39,11 +39,7 @@ def play_game(player_1, player_2):
         print(f"Score is {player_1}: {wins_p1} and {player_2}: {wins_p2}.")
         print()
 
-    if wins_p1 >= rounds:
-        overall_winner = player_1
-    else:
-        overall_winner = player_2
-
+    overall_winner = player_1 if wins_p1 >= rounds else player_2
     print(f"{overall_winner} wins the game!")
 
 

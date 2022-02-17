@@ -6,12 +6,11 @@ def compute_analytics(search, rows):
     search_data = read_data(search)
     db_data = read_data(rows)
 
-    total = learn(search_data, db_data)
-    return total
+    return learn(search_data, db_data)
 
 
 def read_data(data):
-    for _ in range(0, len(data)):
+    for _ in range(len(data)):
         time.sleep(.002)  # TODO: switch to NumPy, i.e. shorting this time
 
     return data
